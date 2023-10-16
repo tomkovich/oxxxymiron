@@ -1,0 +1,140 @@
+.tour {
+  padding: 20px 0;
+
+  &-page {
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      background: url(../images/tour-bg.webp) no-repeat center/cover;
+      width: 100vw;
+      max-width: 1920px;
+      height: 100vh;
+      max-height: 945px;
+      top: -70px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+  }
+
+  &-tabs {
+    @include flex;
+    justify-content: flex-start;
+    margin: 30px 0;
+    column-gap: 16px;
+  }
+
+  &-tab {
+    color: $grey;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      position: absolute;
+      background: $action;
+      bottom: -4px;
+      transition: width 0.25s;
+    }
+
+    &.active {
+      color: $light;
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  &-list {
+    margin-top: 20px;
+  }
+
+  &-banner {
+    position: relative;
+    padding-top: 32px;
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-item {
+    @include flex;
+    padding: 29px 0;
+    text-transform: uppercase;
+    justify-content: space-between;
+    border-top: 1px solid rgba(217, 217, 217, 0.5);
+
+    &:last-child {
+      border-bottom: 1px solid rgba(217, 217, 217, 0.5);
+    }
+
+    @media only screen and (max-width: 750px) {
+      flex-wrap: wrap;
+      row-gap: 10px;
+      padding: 14px 0;
+      align-items: flex-start;
+    }
+
+    &__date {
+      color: $light;
+      font-size: 20px;
+      font-weight: 900;
+
+      @media only screen and (max-width: 1366px) {
+        font-size: 16px;
+      }
+    }
+
+    &__place {
+      color: $grey;
+      font-weight: 400;
+      margin-top: 3px;
+
+      @media only screen and (max-width: 1366px) {
+        font-size: 12px;
+      }
+
+      @media only screen and (max-width: 750px) {
+        margin-top: 0;
+      }
+    }
+
+    &__city {
+      color: $light;
+      font-size: 24px;
+      font-weight: 700;
+
+      @media only screen and (max-width: 1366px) {
+        font-size: 18px;
+      }
+
+      @media only screen and (max-width: 750px) {
+        font-size: 16px;
+      }
+    }
+
+    &__button {
+      @include button;
+
+      &.soldout {
+        background: #505050;
+        cursor: not-allowed;
+      }
+
+      @media only screen and (max-width: 750px) {
+        width: 100%;
+      }
+    }
+  }
+}

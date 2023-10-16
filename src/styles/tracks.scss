@@ -1,0 +1,214 @@
+.tracks {
+  padding: 16px 0 32px 0;
+  margin-top: 20px;
+
+  @media only screen and (max-width: 1366px) {
+    margin-top: 0;
+  }
+
+  &-section {
+    padding: 50px 0;
+  }
+
+  &-list {
+    margin-top: 40px;
+
+    &__item {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 300px 1fr;
+      grid-template-rows: auto 40px;
+      grid-template-areas:
+        "image info"
+        "image button";
+
+      @media only screen and (max-width: 1366px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content;
+        justify-content: center;
+        grid-template-areas:
+          "image"
+          "info"
+          "button";
+      }
+
+      @media only screen and (max-width: 750px) {
+        gap: 10px;
+      }
+
+      &-image {
+        grid-area: image;
+        width: 100%;
+        height: 300px;
+
+        @media only screen and (max-width: 1366px) {
+          height: 200px;
+        }
+
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &-info {
+        grid-area: info;
+      }
+
+      &-date {
+        color: $grey;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 750px) {
+          font-size: 12px;
+        }
+      }
+
+      &-title {
+        color: $light;
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: 16px 0;
+        line-height: 115%;
+
+        @media only screen and (max-width: 750px) {
+          margin: 10px 0;
+          font-size: 18px;
+        }
+      }
+
+      &-description {
+        color: $light;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+
+        @media only screen and (max-width: 750px) {
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+
+      &-button {
+        @include button;
+        grid-area: button;
+        width: 213px;
+        padding: 12px;
+
+        @media only screen and (max-width: 750px) {
+          width: 100%;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+.track {
+  cursor: pointer;
+  text-transform: uppercase;
+  width: max-content;
+  display: grid;
+  gap: 16px;
+  position: relative;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas:
+    "image date"
+    "title .";
+  max-width: 100%;
+
+  @media only screen and (max-width: 750px) {
+    gap: 10px;
+    grid-template-rows: max-content 1fr;
+    grid-template-areas:
+      "image date"
+      "image title";
+  }
+
+  @media only screen and (max-width: 1366px) {
+    grid-template-columns: 200px 1fr;
+  }
+
+  &-item {
+    @media only screen and (max-width: 750px) {
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+
+    &:nth-child(2n) {
+      .track {
+        margin-left: auto;
+        grid-template-columns: 1fr 300px;
+        grid-template-areas:
+          "date image"
+          ". title";
+
+        @media only screen and (max-width: 1366px) {
+          grid-template-columns: 1fr 200px;
+        }
+
+        @media only screen and (max-width: 750px) {
+          grid-template-areas:
+            "date image"
+            "title image";
+        }
+      }
+    }
+  }
+
+  &-image {
+    grid-area: image;
+    width: 100%;
+    height: 300px;
+    position: relative;
+
+    @media only screen and (max-width: 1366px) {
+      height: 200px;
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    .icon {
+      &-pause {
+        width: 100px;
+        height: 100px;
+        fill: $light;
+        @include center;
+      }
+    }
+  }
+
+  &-date {
+    color: $grey;
+    font-size: 14px;
+    grid-area: date;
+  }
+
+  &-title {
+    color: $light;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 125%;
+    position: absolute;
+    grid-area: title;
+    top: 100%;
+    z-index: 2;
+
+    @media only screen and (max-width: 1366px) {
+      font-size: 18px;
+    }
+
+    @media only screen and (max-width: 750px) {
+      position: relative;
+      top: 0;
+    }
+  }
+}

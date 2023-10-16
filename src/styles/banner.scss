@@ -1,0 +1,208 @@
+.banner {
+  min-height: 540px;
+  position: relative;
+  background-image: url(../images/main-bg.webp);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @media only screen and (max-width: 1366px) {
+    min-height: 250px;
+  }
+
+  &-video {
+    position: relative;
+    @include center;
+    top: 30%;
+
+    @media only screen and (max-width: 1366px) {
+      width: 500px;
+      max-width: 100%;
+    }
+  }
+}
+
+.shop {
+  &-banner {
+    background: rgb(25, 27, 35);
+    width: 100%;
+    height: 336px;
+    padding-left: 24px;
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    @media only screen and (max-width: 1366px) {
+      height: 215px;
+    }
+
+    @media only screen and (max-width: 750px) {
+      align-items: flex-end;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+      }
+
+      .shop-logo {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:after,
+    &::before {
+      content: "";
+      display: block;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:before {
+      background: url("../images/effect.webp") no-repeat center/contain;
+      @include center;
+    }
+
+    &:after {
+      background: url("../images/banner-glow.webp") no-repeat center/cover;
+      opacity: 0.5;
+      transition: opacity 0.25s;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+
+    &__section {
+      margin-top: 200px;
+
+      @media only screen and (max-width: 1366px) {
+        margin-top: 50px;
+      }
+    }
+
+    &__wrapper {
+      overflow: hidden;
+      min-height: 504px;
+      display: flex;
+      align-items: flex-end;
+
+      @media only screen and (max-width: 1366px) {
+        min-height: 320px;
+      }
+
+      @media only screen and (max-width: 750px) {
+        &:before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 156px;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          z-index: 3;
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(1, 1, 1, 0.75) 100%);
+        }
+      }
+    }
+
+    &__text {
+      @media only screen and (max-width: 1366px) {
+        position: relative;
+        z-index: 3;
+      }
+    }
+
+    &__subtitle {
+      color: $grey;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 32px;
+
+      @media only screen and (max-width: 1366px) {
+        font-size: 18px;
+        line-height: 125%;
+      }
+
+      @media only screen and (max-width: 750px) {
+        font-size: 14px;
+      }
+    }
+
+    &__title {
+      color: $light;
+      font-size: 70px;
+      font-weight: 900;
+      line-height: 125%;
+      margin-top: 32px;
+
+      @media only screen and (max-width: 1366px) {
+        font-size: 50px;
+        margin-top: 16px;
+      }
+
+      @media only screen and (max-width: 750px) {
+        font-size: 38px;
+        margin-top: 0px;
+      }
+    }
+
+    &__image {
+      position: absolute;
+      right: 10%;
+      bottom: -23px;
+      z-index: 2;
+
+      @media only screen and (max-width: 1366px) {
+        right: 3%;
+      }
+
+      @media only screen and (max-width: 750px) {
+        width: 100%;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+      }
+
+      img {
+        @media only screen and (max-width: 1366px) {
+          width: 300px;
+        }
+
+        @media only screen and (max-width: 750px) {
+          left: 50%;
+          transform: translateX(-50%);
+          position: absolute;
+          bottom: -23px;
+          width: 80%;
+        }
+      }
+    }
+
+    &__logo {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      z-index: 1;
+
+      img {
+        transition: transform 1s ease-in-out;
+        transform: rotate(0);
+      }
+
+      @media only screen and (max-width: 1366px) {
+        width: 104px;
+        height: 98px;
+        top: 10px;
+        right: 10px;
+      }
+
+      @media only screen and (max-width: 750px) {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}

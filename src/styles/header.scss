@@ -1,0 +1,139 @@
+.header {
+  z-index: 2;
+}
+
+header {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: 750px) {
+    padding-top: 10px;
+  }
+
+  .logo {
+    @media only screen and (max-width: 750px) {
+      width: 32px;
+    }
+  }
+}
+
+.socials {
+  @include flex;
+  column-gap: 10px;
+  justify-content: flex-end;
+
+  svg {
+    fill: $light;
+    width: 16px;
+    height: 16px;
+    transition: fill 0.25s ease;
+  }
+
+  &-item {
+    &:hover {
+      svg {
+        fill: $action;
+      }
+    }
+  }
+}
+
+.menu {
+  @include flex;
+  column-gap: 16px;
+
+  &-mobile {
+    margin-left: auto;
+    display: none;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      fill: $light;
+    }
+
+    &__button {
+      cursor: pointer;
+    }
+
+    @media only screen and (max-width: 750px) {
+      display: block;
+    }
+
+    &__list {
+      position: fixed;
+      width: 100%;
+      height: max-content;
+      left: 0;
+      top: 0;
+      background: $primary;
+      height: 100vh;
+      transform: translateX(100vw);
+      transition: transform 0.75s ease-in-out;
+
+      &.opened {
+        transform: translateX(0);
+      }
+
+      .icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .logo {
+        width: 40px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      padding: 60px 0;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      row-gap: 20px;
+    }
+
+    &__item {
+      color: $light;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 125%;
+      text-transform: uppercase;
+
+      a {
+        &.active {
+          color: $action;
+        }
+      }
+    }
+  }
+
+  &-item {
+    a {
+      color: $light;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+
+      &:hover,
+      &.active {
+        color: $action;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    display: none;
+  }
+}
